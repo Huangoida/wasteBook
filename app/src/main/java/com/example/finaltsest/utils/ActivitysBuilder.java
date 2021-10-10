@@ -3,6 +3,7 @@ package com.example.finaltsest.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 
 import androidx.fragment.app.Fragment;
 
@@ -34,6 +35,11 @@ public class ActivitysBuilder {
 
     public static ActivitysBuilder build(Fragment fragment, Class<? extends Activity> clz) {
         return new ActivitysBuilder(fragment, clz);
+    }
+
+    public ActivitysBuilder putExtra(String name, Parcelable value) {
+        intent.putExtra(name, value);
+        return this;
     }
 
     //是否关闭当前页面

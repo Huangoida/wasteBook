@@ -3,7 +3,12 @@ package com.example.finaltsest.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class User implements Parcelable {
+import org.litepal.annotation.Column;
+import org.litepal.crud.LitePalSupport;
+
+public class User extends LitePalSupport implements Parcelable {
+
+    @Column(unique = true)
     private String username;
     private String password;
 

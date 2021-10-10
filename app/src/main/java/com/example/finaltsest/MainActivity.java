@@ -3,9 +3,11 @@ package com.example.finaltsest;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.finaltsest.activity.BaseActivity;
 import com.example.finaltsest.activity.UserLoginActivity;
@@ -24,13 +26,19 @@ import permissions.dispatcher.RuntimePermissions;
 public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBinding> {
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MainActivityPermissionsDispatcher.checkUserIsLoginWithPermissionCheck(this);
+    }
+
+    @Override
     protected int getContentViewId() {
         return R.layout.activity_main;
     }
 
     @Override
     protected void processLogic() {
-        MainActivityPermissionsDispatcher.checkUserIsLoginWithPermissionCheck(this);
+
     }
 
     @Override

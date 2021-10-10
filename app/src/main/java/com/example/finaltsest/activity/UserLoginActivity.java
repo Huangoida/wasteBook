@@ -7,10 +7,10 @@ import android.view.View;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.finaltsest.MainActivity;
 import com.example.finaltsest.R;
 import com.example.finaltsest.ViewModel.LoginViewModel;
 import com.example.finaltsest.bean.User;
-import com.example.finaltsest.common.PARAMS;
 import com.example.finaltsest.databinding.ActivityUserLoginBinding;
 import com.example.finaltsest.utils.ActivitysBuilder;
 import com.example.finaltsest.utils.ToastUtils;
@@ -57,7 +57,12 @@ public class UserLoginActivity extends BaseActivity<LoginViewModel, ActivityUser
     public void login(){
         String username = getStringByUI(bingding.Username);
         String password = getStringByUI(bingding.Password);
-        LiveData<User> user =mViewModel.login(PARAMS.login(username,password));
+        User user =mViewModel.login(username,password);
+        if (user == null){
+            ToastUtils.showToast("用户名或密码错误");
+            return;
+        }
+        ActivitysBuilder.build(UserLoginActivity.this, MainActivity.class).putExtra("username",user).startActivity();
     }
 
 
