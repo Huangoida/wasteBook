@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.UserLoginActivity"
+    >
+  <data>
+    <variable
+        name="loginUser"
+        type="com.example.finaltsest.bean.User" />
+    <variable
+        name="loginHandler"
+        type="com.example.finaltsest.activity.UserLoginActivity.LoginHandles" />
+  </data>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+      <EditText
+          android:id="@+id/Username"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:hint="请输入用户名"
+          android:minHeight="48dp"
+          android:paddingLeft="90dp"
+          android:singleLine="true"
+          android:text="@{loginUser.username}"
+          android:textColorHint="#DDDDDD"
+          android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp">
+
+      <EditText
+          android:id="@+id/Password"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:hint="请输入密码"
+          android:minHeight="48dp"
+          android:paddingLeft="90dp"
+          android:singleLine="true"
+          android:text="@{loginUser.password}"
+          android:textColorHint="#DDDDDD"
+          android:textSize="16sp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{loginHandler::clickLoginBtn}"
+        android:text="@string/login">
+    </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_Register"
+        android:text="@string/register"
+        android:onClick="@{loginHandler.clickRegister}">
+    </TextView>
+  </LinearLayout>
+</layout>
