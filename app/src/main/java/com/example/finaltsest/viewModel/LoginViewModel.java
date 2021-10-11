@@ -1,19 +1,23 @@
-package com.example.finaltsest.ViewModel;
+package com.example.finaltsest.viewModel;
 
-import androidx.lifecycle.LiveData;
+import android.app.Application;
+
+import androidx.annotation.NonNull;
 
 import com.example.finaltsest.bean.User;
 import com.example.finaltsest.utils.MMKVUtils;
-import com.tencent.mmkv.MMKV;
 
 import org.litepal.LitePal;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class LoginViewModel extends BaseViewModel{
 
-    public User login(String username,String password){
+    public LoginViewModel(@NonNull Application application) {
+        super(application);
+    }
+
+    public User login(String username, String password){
 
         List<User> loginUser = LitePal.where("username=? and password=?",username,password).find(User.class);
         if (loginUser.size() == 0){

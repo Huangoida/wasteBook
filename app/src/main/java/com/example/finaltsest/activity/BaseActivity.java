@@ -12,7 +12,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProvider;
 
 
-import com.example.finaltsest.ViewModel.BaseViewModel;
+import com.example.finaltsest.viewModel.BaseViewModel;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

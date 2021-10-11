@@ -1,8 +1,5 @@
 package com.example.finaltsest.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -10,8 +7,7 @@ import android.view.View;
 
 import com.example.finaltsest.MainActivity;
 import com.example.finaltsest.R;
-import com.example.finaltsest.ViewModel.LoginViewModel;
-import com.example.finaltsest.ViewModel.RegisterViewModel;
+import com.example.finaltsest.viewModel.RegisterViewModel;
 import com.example.finaltsest.bean.User;
 import com.example.finaltsest.databinding.ActivityRegisterBinding;
 import com.example.finaltsest.utils.ActivitysBuilder;

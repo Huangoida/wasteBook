@@ -8,6 +8,14 @@ import org.litepal.crud.LitePalSupport;
 
 public class User extends LitePalSupport implements Parcelable {
 
+    private int id;
+
+
+
+    public static Creator<User> getCREATOR() {
+        return CREATOR;
+    }
+
     @Column(unique = true)
     private String username;
     private String password;
@@ -50,6 +58,14 @@ public class User extends LitePalSupport implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(username);
         parcel.writeString(password);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {

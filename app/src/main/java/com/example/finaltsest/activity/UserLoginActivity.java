@@ -5,11 +5,9 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.finaltsest.MainActivity;
 import com.example.finaltsest.R;
-import com.example.finaltsest.ViewModel.LoginViewModel;
+import com.example.finaltsest.viewModel.LoginViewModel;
 import com.example.finaltsest.bean.User;
 import com.example.finaltsest.databinding.ActivityUserLoginBinding;
 import com.example.finaltsest.utils.ActivitysBuilder;

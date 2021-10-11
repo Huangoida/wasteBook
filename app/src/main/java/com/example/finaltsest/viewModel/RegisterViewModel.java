@@ -1,15 +1,21 @@
-package com.example.finaltsest.ViewModel;
+package com.example.finaltsest.viewModel;
+
+import android.app.Application;
+
+import androidx.annotation.NonNull;
 
 import com.example.finaltsest.bean.User;
-import com.example.finaltsest.utils.DBUtils;
 import com.example.finaltsest.utils.MMKVUtils;
-import com.example.finaltsest.utils.ToastUtils;
 
 import org.litepal.LitePal;
 
 import java.util.List;
 
 public class RegisterViewModel extends BaseViewModel{
+
+    public RegisterViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public int Register(User user){
         List<User> romUsers=LitePal.where("username =?",user.getUsername()).find(User.class);

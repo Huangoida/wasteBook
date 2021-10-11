@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalTsest">
         <activity
+            android:name=".activity.BookingActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.RegisterActivity"
             android:exported="true" />
         <activity
