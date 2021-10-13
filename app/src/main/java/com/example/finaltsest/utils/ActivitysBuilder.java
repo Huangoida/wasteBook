@@ -41,6 +41,11 @@ public class ActivitysBuilder {
         intent.putExtra(name, value);
         return this;
     }
+    public ActivitysBuilder putExtra(String name, int value) {
+        intent.putExtra(name, value);
+        return this;
+    }
+
 
     //是否关闭当前页面
     public ActivitysBuilder finish(boolean finish) {

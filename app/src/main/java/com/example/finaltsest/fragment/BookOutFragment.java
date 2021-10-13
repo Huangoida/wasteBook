@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.finaltsest.MainActivity;
 import com.example.finaltsest.R;
 import com.example.finaltsest.adapter.BookOutRecycleVIewApapter;
 import com.example.finaltsest.bean.Item;
+import com.example.finaltsest.bean.WasteBook;
 import com.example.finaltsest.utils.ToastUtils;
 import com.example.finaltsest.viewModel.BookOutViewModel;
 import com.example.finaltsest.databinding.BookOutFragmentBinding;
@@ -30,17 +32,45 @@ import org.litepal.LitePal;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.itimetraveler.widget.pickerselector.TimeWheelPicker;
+
 public class BookOutFragment extends BaseFragment<BookOutViewModel, BookOutFragmentBinding> implements TextWatcher {
 
     private BookOutRecycleVIewApapter apapter;
     private List<Item> itemList = new ArrayList<>();
     private View old_view = null;
     private BookingViewModel bookingViewModel;
+    private GridLayoutManager gridLayoutManager;
     @Override
     protected int getContentViewId() {
         return R.layout.book_out_fragment;
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mViewModel.getActivityViewModel().getWasteBook() != null){
+            if (mViewModel.getActivityViewModel().getWasteBook().getValue()!= null){
+                WasteBook wasteBook =  mViewModel.getActivityViewModel().getWasteBook().getValue();
+                mViewModel.setmDest(wasteBook.getNote());
+                mViewModel.setAmount(wasteBook.getAmount());
+                mViewModel.setDate(wasteBook.getTime());
+                mViewModel.setAmountText(String.valueOf(wasteBook.getAmount()));
+                mViewModel.setIconId(wasteBook.getIcon());
+                mViewModel.setmDateText(TimeWheelPicker.DEFAULT_DATE_FORMAT.format(wasteBook.getTime())+" " + TimeWheelPicker.DEFAULT_TIME_FORMAT.format(wasteBook.getTime()));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        View view =gridLayoutManager.findViewByPosition(wasteBook.getIcon());
+                        old_view = view;
+                        view.setBackgroundColor(Color.parseColor("#FFA726"));
+                    }
+                },300);
+
+            }
+        }
+    }
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
@@ -50,9 +80,14 @@ public class BookOutFragment extends BaseFragment<BookOutViewModel, BookOutFragm
         binding.setVm(mViewModel);
         itemList = LitePal.where("tab=?","0").find(Item.class);
         apapter = new BookOutRecycleVIewApapter(R.layout.item_book_out_view,itemList,getContext());
-
+        if (bookingViewModel.getWasteBook() != null){
+            if (bookingViewModel.getWasteBook().getValue() != null){
+                mViewModel.setWasteBookEdit(bookingViewModel.getWasteBook().getValue());
+            }
+        }
+        gridLayoutManager = new GridLayoutManager(this.getContext(),5);
         binding.bookOutRCV.setAdapter(apapter);
-        binding.bookOutRCV.setLayoutManager(new GridLayoutManager(this.getContext(),5));
+        binding.bookOutRCV.setLayoutManager(gridLayoutManager);
         apapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {

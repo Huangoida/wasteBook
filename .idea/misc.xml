@@ -9,14 +9,19 @@
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/activity_booking.xml" value="0.2328125" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/activity_main.xml" value="0.20168066580377575" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/activity_user_login.xml" value="0.23229166666666667" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/assest_fragment.xml" value="0.3927083333333333" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/book_in_fragment.xml" value="0.40729166666666666" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/book_out_fragment.xml" value="0.1" />
-        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/dialog_content_normal.xml" value="0.1" />
-        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/home_fragment.xml" value="0.40729166666666666" />
+        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/dialog_content_normal.xml" value="0.20168066580377575" />
+        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/dialog_rev.xml" value="0.3967391304347826" />
+        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/home_fragment.xml" value="0.26621847886098404" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/item_book_out_view.xml" value="0.40729166666666666" />
+        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/item_home_view.xml" value="0.5405041843541191" />
         <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/layout/mine_fragment.xml" value="0.3145780051150895" />
+        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/menu/home_toolment.xml" value="0.40729166666666666" />
+        <entry key="..\:/AndroidProject/finalTsest/app/src/main/res/menu/main_menu.xml" value="0.40729166666666666" />
       </map>
     </option>
   </component>

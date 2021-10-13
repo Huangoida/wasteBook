@@ -3,6 +3,7 @@ package com.example.finaltsest;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.example.finaltsest.activity.UserLoginActivity;
 import com.example.finaltsest.bean.Item;
@@ -27,9 +28,13 @@ public class MyApplication extends Application {
         MMKV.initialize(this);
         ContextUtils.initContext(this);
         DBUtils.getInstance();
-        List<Item> itemList =  LitePal.findAll(Item.class);
+        List<Item> itemList =  LitePal.where("tab=?","0").find(Item.class);
         if (itemList.size() == 0){
             initDataBase();
+        }
+        List<Item> inIconList = LitePal.where("tab=?","1").find(Item.class);
+        if (inIconList.size() ==0){
+            initItemInDataBase();
         }
     }
 
@@ -45,6 +50,19 @@ public class MyApplication extends Application {
             item.setIconName(iconName[i]);
             item.setId(i);
             item.setTab(0);
+            item.save();
+        }
+    }
+    public void initItemInDataBase(){
+        String[] name ={"工资","兼职","投资理财","人情社交","奖金补贴","报销","生意","卖二手","生活费","中奖","转账","保险理赔"};
+        String[] iconName = {"wodegongzi","shijian","licai","shejiao","butieshezhi","baoxiao","dianpu",
+        "gouwu","cunqianguan","shengriliwu","zhuanzhang","lipei"};
+        for (int i = 0; i < name.length; i++) {
+            Item item = new Item();
+            item.setName(name[i]);
+            item.setIconName(iconName[i]);
+            item.setId(i);
+            item.setTab(1);
             item.save();
         }
     }

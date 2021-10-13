@@ -32,7 +32,6 @@ public abstract class BaseActivity <VM extends BaseViewModel,VDB extends ViewDat
         setContentView(getContentViewId());
         bingding = DataBindingUtil.setContentView(this,getContentViewId());
         bingding.setLifecycleOwner(this);
-
         createViewModel();
         processLogic();
     }

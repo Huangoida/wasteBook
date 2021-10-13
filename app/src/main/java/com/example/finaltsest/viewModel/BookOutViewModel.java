@@ -24,6 +24,7 @@ import com.example.finaltsest.utils.DialogTuil;
 import com.example.finaltsest.utils.ToastUtils;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -125,6 +126,7 @@ public class BookOutViewModel extends BaseViewModel {
             @Override
             public void onTimeChanged(TimeWheelPicker view, Calendar date) {
                 mDateText.set(TimeWheelPicker.DEFAULT_DATE_FORMAT.format(date.getTime())+" " + TimeWheelPicker.DEFAULT_TIME_FORMAT.format(date.getTime()));
+                setDate(date.getTime().getTime());
             }
         });
         DialogTuil.showDialog(this.context,"",picker);
@@ -135,7 +137,7 @@ public class BookOutViewModel extends BaseViewModel {
      * 确定点击
      */
     public void onEnterClick(Activity activity) {
-        if (getType().get() == null || getAmountText().get() == null || getAmountText().get().isEmpty() || iconId == -1) {
+        if (getAmountText().get().isEmpty() || iconId == -1) {
             ToastUtils.showToast("请输入完整信息");
         } else {
             Boolean wasteBookType = false;
@@ -145,12 +147,12 @@ public class BookOutViewModel extends BaseViewModel {
                 getType().set("");
             }
             if (wasteBookEdit != null) {
-
-                wasteBookEdit.setAmount(Double.parseDouble(getAmountText().get()));
+                wasteBookEdit.setAmount(mAmount);
                 wasteBookEdit.setIcon(iconId);
                 wasteBookEdit.setType(wasteBookType);
-                wasteBookEdit.setNote(getDesc().get());
+                wasteBookEdit.setNote(getType().get());
                 wasteBookEdit.setTime(mDate);
+                wasteBookEdit.save();
                 // edit
             } else {
                 WasteBook wasteBook = new WasteBook(user.getId(),wasteBookType,mAmount,iconId, getType().get(),mDate);
@@ -193,6 +195,10 @@ public class BookOutViewModel extends BaseViewModel {
         this.mDateText = mDateText;
     }
 
+    public void setmDateText(String mDateText){
+        this.mDateText.set(mDateText);
+    }
+
     public ObservableField<String> getAmountText() {
         return mAmountText;
     }
@@ -200,6 +206,11 @@ public class BookOutViewModel extends BaseViewModel {
     public void setmAmountText(ObservableField<String> mAmountText) {
         this.mAmountText = mAmountText;
     }
+
+    public void setAmountText(String mAmountText) {
+        this.mAmountText.set(mAmountText);
+    }
+
 
     public void setmAmountTextClear() {
         this.mAmountText.set("");
@@ -214,6 +225,9 @@ public class BookOutViewModel extends BaseViewModel {
 
     public void setDesc(ObservableField<String> mDesc) {
         this.mDesc = mDesc;
+    }
+    public void setmDest(String mDesc){
+        this.mDesc.set(mDesc);
     }
 
     public ObservableField<String> getType() {
@@ -262,6 +276,14 @@ public class BookOutViewModel extends BaseViewModel {
 
     public BookingViewModel getActivityViewModel() {
         return activityViewModel;
+    }
+
+    public WasteBook getWasteBookEdit() {
+        return wasteBookEdit;
+    }
+
+    public void setWasteBookEdit(WasteBook wasteBookEdit) {
+        this.wasteBookEdit = wasteBookEdit;
     }
 
     public void setActivityViewModel(BookingViewModel activityViewModel) {

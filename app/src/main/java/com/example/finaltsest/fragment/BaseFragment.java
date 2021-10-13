@@ -45,8 +45,9 @@ public abstract class BaseFragment<VM extends BaseViewModel, VDB extends ViewDat
             mContentView = binding.getRoot();
             binding.setLifecycleOwner(this);
             createViewModel();
-            setListener();
             processLogic(savedInstanceState);
+            setListener();
+
         } else {
             ViewGroup parent = (ViewGroup) mContentView.getParent();
             if (parent != null) {

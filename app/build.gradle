@@ -48,6 +48,7 @@ dependencies {
     implementation 'com.winton:bottomnavigationview:1.0.0'
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'io.itimetraveler:pickerselector:0.0.0.2'
+    implementation 'im.dacer:AndroidCharts:1.0.4'
     //权限申请
     implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.9.1"
     annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.1"

@@ -1,5 +1,8 @@
 package com.example.finaltsest.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
@@ -49,7 +52,7 @@ public class WasteBook extends LitePalSupport {
         this.userId = userId;
     }
 
-    public boolean isType() {
+    public boolean getType() {
         return type;
     }
 
@@ -88,4 +91,6 @@ public class WasteBook extends LitePalSupport {
     public void setTime(long time) {
         this.time = time;
     }
+
+
 }
